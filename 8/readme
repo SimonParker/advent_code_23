@@ -1,0 +1,9 @@
+ok so there were a couple of observations made about the input that really helped with it
+
+- every starting location has only 1 z in the cycle
+- the location of the z is always in a predictable place: the distance from the starting point to the start of the cycle is the same as from the z to the start of the cycle
+- - this means that the z occurs at the length of the cycle, and then each subsequent z is obviously one cycle length further on
+- that last one tells us that we can juse use the LCM of the cycle lengths to find when all of the z's match up.
+
+
+the code isnt accurate to reflect this and im too lazy to fix it, there was a lot of fumbling around to find out the points above as they werent told in the puzzle >:(
