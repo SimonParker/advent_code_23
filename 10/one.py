@@ -27,17 +27,40 @@ p1_goes = ''
 p2 = 'z'
 p2_goes = ''
 
-def set_point(char):
+def set_point(char, direction):
 	if p1 == 'z':
 		p1 = char
+		p1_goes = direction
 	else:
 		p2 = char
+		p2_goes = direction
 
 if start[0] != num_row - 1:
 	match lines[start[0] + 1][start[1]]:
 		case '|':
-			set_point('|')
-			p1_goes = 'n' #we can only assume it's p1 because this is the first spot we check. we need to check for that somehow
+			set_point('|', 'n')
+		case '7':
+			set_point('7', 'e')
+		case 'F':
+			set_point('F', 'w')
+
+if start[0] != 0:
+	match lines[start[0] - 1][start[1]]:
+		case '|':
+			set_point('|', 's')
+		case 'L':
+			set_point('L', 'e')
+		case 'J':
+			set_point('J', 'w')
+		
+if start[1] != num_col - 1:
+	match lines[start[0]][start[1] + 1]:
+		case '7':
+			set_point('7', 's')
+		case 'J':
+			set_point('J', 'n')
+		case '-':
+			set_point('-', 'w')
 		
 ''' #think im doing this wrong. it's not a maze, its a path. there's only one place my current pipe can go, like if im going right in a '-', look at the dest character only
 valid_up = ['|', 'F', '7']
